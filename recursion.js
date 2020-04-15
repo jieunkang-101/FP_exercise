@@ -19,6 +19,7 @@ console.log(recurseReverse("I am a cat"));
 // "red green refactor red green refactor red green refactor"
 
 const rgr = (counts) => {
+  console.log("counts", counts);
   const redGreenRefactor = "red green refactor";
   if (counts === 0) {
     return "";

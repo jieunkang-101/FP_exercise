@@ -7,18 +7,18 @@
 // > painter3.paints()
 // "Paints red!"
 
-const paint = () => ({
-  paint: (color) => {
+const painter = (color) => ({
+  paints: () => {
     return `Paints ${color}!`
   }
 });
 
-const painter1 = paint();
-console.log(painter1.paint("green"));
-const painter2 = paint();
-console.log(painter2.paint("yellow"));
-const painter3 = paint();
-console.log(painter3.paint("red"));
+const painter1 = painter("green");
+//console.log(painter1.paints());
+const painter2 = painter("yellow");
+//console.log(painter2.paints());
+const painter3 = painter("red");
+//console.log(painter3.paints());
 
 
 // Problem #2
@@ -30,6 +30,17 @@ console.log(painter3.paint("red"));
 // > sleepyBear.sound()
 // "Grrr...yawn" 
 
+const soundMaker = (sound) => ({
+  sound: () => {
+    return `${sound}!`
+  }
+});
+const faucet = soundMaker("Drip drip drip.");
+//console.log(faucet.sound());
+const oldCar = soundMaker("Grumble grumble.");
+//console.log(oldCar.sound());
+const sleepyBear = soundMaker("Grrr....yawn");
+//console.log(sleepyBear.sound());
 
 
 //Problem #3
@@ -38,7 +49,16 @@ console.log(painter3.paint("red"));
 // > battleRobot1.throw();
 // "The battle robot throws the spear 100 yards at 200 miles per hour!"
 
+const recursiveThrow = (distance) => {
+  return (speed) => ({
+    throw: () => {
+      return `The battle robot throws the spear ${distance} yards at ${speed} miles per hour!`
+    }
+  });
+}
 
+const battleRobot1 = recursiveThrow(100)(200);
+//console.log(battleRobot1.throw());
 
 // Problem #4
 // First use closures to create three dance moves. For instance, a dancer should be able to do the following:
@@ -47,3 +67,19 @@ console.log(painter3.paint("red"));
 // > dancer.tango()
 // "The dancer tangos!"
 // Then add the dance moves to a dancer.
+
+const recursiveDancer = (name) => ({
+  samba: () => {
+    return `${name} sambas!`;
+  },
+  tango: () => {
+    return `${name} tangos!`;
+  }
+});
+
+const dancer1 = recursiveDancer("Claire");
+const dancer2 = recursiveDancer("Steve");
+console.log(dancer1.samba());
+console.log(dancer1.tango());
+console.log(dancer2.samba());
+console.log(dancer2.tango());

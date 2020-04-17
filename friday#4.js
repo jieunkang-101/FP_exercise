@@ -8,19 +8,19 @@
 // Input: "copyright"
 // Output: true
 
-// function isUnique(str) {
-//   for (let i = 0; i < str.length; i++) {
-//     let char = str[i];
-//     if (str.indexOf(char, i + 1) > -1) {
-//       return false;
-//     }
-//   }
-//   return true;
-// }
+function isUnique(str) {
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i];
+    if (str.indexOf(char, i + 1) > -1) {
+      return false;
+    }
+  }
+  return true;
+}
 
 //const strArr = string.toString().split("");
 
-const isUnique = (string, index =0, elements = {}) => {
+const recursiveUnique = (string, index =0, elements = []) => {
   const currentElement = string[index];
   if (index >= string.length) {
     return true;
@@ -35,4 +35,6 @@ const isUnique = (string, index =0, elements = {}) => {
 
 console.log(isUnique("hello"));
 console.log(isUnique("copyright"));
+console.log(recursiveUnique("hello"));
+console.log(recursiveUnique("copyright"));
 

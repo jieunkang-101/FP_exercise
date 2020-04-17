@@ -11,41 +11,40 @@ function stringCompression (str) {
     return "Please enter a valid input";
   }
 
-  let output = '';
+  let result = '';
   let count = 0;
   for (let i = 0; i < str.length; i++) {
     count += 1;
-    if (str[i] != str[i+1]) {
+    if (str[i] !== str[i+1]) {
       if (count !== 1) {
-        output += count + str[i];
+        result += count + str[i];
       } else {
-        output += str[i];
+        result += str[i];
       }
       count = 0;
     }
   }
-  return output;
+  return result;
 }
-// console.log(stringCompression("aaabccdddda"));
-// console.log(stringCompression());
+//====================================
 
-function recurviseCompression (string, index = 0, count = 1, result = []) {
+function recurviseCompression (string, index = 0, count = 1, result = "") {
   if (string == null) {
     return "Please enter a valid input";
   }
 
   if (index >= string.length) {
-    return result.join('');
+    return result;
   } else {
-    if (string[index] !== string[index +1]) {
-      const newResult = [...result, string[index]];
-      return recurviseCompression(string, index +1, 1, newResult );
-    } else {
-      const newResult = [...result, count + string[index]];
-      return recurviseCompression(string, index +1, count +1, newResult );
+    if (string[index] === string[index +1]) {
+      return recurviseCompression(string, index +1, count +1, result );
+    } 
+      currentResult = count + string[index];
+      return recurviseCompression(string, index +1, 1, result + currentResult );
     } 
   }
-}
-console.log(recurviseCompression("aaabccdddda"));
-console.log(recurviseCompression());
+
+//console.log(recurviseCompression("aaabccdddda"));
+//console.log(recurviseCompression());
+
 

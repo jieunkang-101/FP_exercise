@@ -9,12 +9,12 @@
 
 const recursiveDedupe = (arr, dedupedArr = [], index = 0) => {
   if (!(toString.call(arr) === "[object Array]")) {
-    return "Please enter a valid input";
+    return "Please enter a valid input";                   // edge case
   }
 
-  if (index >= arr.length) {
+  if (index >= arr.length) {                             // base case
     return dedupedArr;
-  } else {
+  } else {                                                    // terminateion case
     if (!dedupedArr.includes(arr[index])) { 
       const newArr = [...dedupedArr, arr[index]];
       return recursiveDedupe(arr, newArr, index + 1);

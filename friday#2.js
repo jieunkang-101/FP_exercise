@@ -43,20 +43,34 @@ function removeDuplicates(arr) {
   });
   return dedupe;
 }
-console.log(removeDuplicates("string"));
-console.log(removeDuplicates([7, 9, "hi", 12, "hi", 7, 53]));
-console.log(removeDuplicates(["cat", "dog", "cat", "bat", "dog", "bat", "cow"]));
 
+function removeDuplicates(arr) {
+	for(let i = 0; i < arr.length; i++) {
+  	for(let j = 0; j < arr.length; j++) {
+    	if(arr[i] === arr[j] && i !== j) {
+      	arr.splice(j, 1);
+      }
+    }
+  }
+  return arr;
+}
 
+function removeDuplicates(data) {
+  return data.filter((value, index) => data.indexOf(value) === index);
+}
 
+function getDuplicates(data) {
+  return data.filter((value, index) => data.indexOf(value) !== index);
+}
 
+function removeDuplicates(data) {
+  let unique = data.reduce(function(a, b) {
+    if (a.indexOf(b) < 0)a.push(b);
+    return a;
+  }, []);
+  return unique;
+}
 
-
-
-// function removeDuplicates(data) {
-//   return data.filter((value, index) => data.indexOf(value) === index);
-// }
-
-// function getDuplicates(data) {
-//   return data.filter((value, index) => data.indexOf(value) !== index);
-// }
+function removeDuplicates(data) {
+  return data.reduce((acc, curr) => acc.includes(curr) ? acc : [...acc, curr], []);
+}

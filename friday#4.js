@@ -18,23 +18,24 @@ function isUnique(str) {
   return true;
 }
 
-//const strArr = string.toString().split("");
+// console.log(isUnique("hello"));
+// console.log(isUnique("copyright"));
 
-const recursiveUnique = (string, index =0, elements = []) => {
+const recursiveIsUnique = (string, index =0, elements = {}) => {
+  //console.log(elements);
   const currentElement = string[index];
-  if (index >= string.length) {
+  if (!currentElement) {
     return true;
   } else {
-    if (elements[string[index]]) {
+    if (elements[currentElement]) {
       return false;
     }
-    elements[currentElement] = true;
-    return isUnique(string, index +1, elements);
+    elements[currentElement] = true;    
+    return recursiveIsUnique(string, index +1, elements);
   }
 }
 
-console.log(isUnique("hello"));
-console.log(isUnique("copyright"));
-console.log(recursiveUnique("hello"));
-console.log(recursiveUnique("copyright"));
+console.log(recursiveIsUnique("hello"));
+console.log(recursiveIsUnique("copyright"));
+
 

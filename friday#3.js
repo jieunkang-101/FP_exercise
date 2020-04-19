@@ -6,8 +6,8 @@
 
 // Output: "3ab2c4da"
 
-function stringCompression (str) {
-  if (str == null) {
+function loopCompression (str) {
+  if (str == null || typeof str !== "string") {
     return "Please enter a valid input";
   }
 
@@ -29,7 +29,7 @@ function stringCompression (str) {
 //====================================
 
 function recurviseCompression (string, index = 0, count = 1, result = "") {
-  if (string == null) {
+  if (string == null || typeof string !== "string") {
     return "Please enter a valid input";
   }
 
@@ -39,12 +39,19 @@ function recurviseCompression (string, index = 0, count = 1, result = "") {
     if (string[index] === string[index +1]) {
       return recurviseCompression(string, index +1, count +1, result );
     } 
+
+    if (count === 1) {
+      currentResult = string[index];
+      return recurviseCompression(string, index +1, 1, result + currentResult );
+    } else {
       currentResult = count + string[index];
       return recurviseCompression(string, index +1, 1, result + currentResult );
-    } 
-  }
+    }
+  } 
+}
 
-//console.log(recurviseCompression("aaabccdddda"));
-//console.log(recurviseCompression());
+console.log(recurviseCompression("aaabccdddda"));
+console.log(recurviseCompression(111));
+console.log(recurviseCompression());
 
 
